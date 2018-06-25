@@ -1,0 +1,12 @@
+{
+    "datetime": "2018-06-21T01:10:57.770020629Z",
+    "module": "uXXXXXXXXXXX",
+    "type": "location",
+    "payload": {
+        "coordinate": {
+            "latitude": 0.000000,
+            "longitude": 0.000000,
+            "range_m": 0
+        }
+    }
+}

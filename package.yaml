@@ -1,0 +1,102 @@
+name:                sakuraio-platform
+version:             0.1.0.0
+github:              "mitsuji/sakuraio-platform"
+license:             BSD3
+author:              "Takamasa Mitsuji"
+maintainer:          "tkms@mitsuji.org"
+copyright:           "2018 Takamasa Mitsuji"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+- test/data/*
+
+# Metadata used when publishing your package
+synopsis:            Haskell representation of messages exchanged on the sakura.io platform.
+category:            Network
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/mitsuji/sakuraio-platform#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- time
+- bytestring
+- aeson
+- unordered-containers
+
+library:
+  source-dirs: src
+
+executables:
+  sakuraio-platform-demo-wai-exe:
+    when:
+    - condition: '!flag(demo)'
+      buildable: false
+    main:                DemoWai.hs
+    source-dirs:         app
+#    ghc-options:
+#    - -threaded
+#    - -rtsopts
+#    - -with-rtsopts=-N
+    dependencies:
+    - sakuraio-platform
+    - http-types
+    - wai
+    - warp
+
+  sakuraio-platform-demo-http-client-exe:
+    when:
+    - condition: '!flag(demo)'
+      buildable: false
+    main:                DemoHttpClient.hs
+    source-dirs:         app
+#    ghc-options:
+#    - -threaded
+#    - -rtsopts
+#    - -with-rtsopts=-N
+    dependencies:
+    - sakuraio-platform
+    - http-types
+    - http-client
+    - http-client-tls
+
+  sakuraio-platform-demo-websockets-exe:
+    when:
+    - condition: '!flag(demo)'
+      buildable: false
+    main:                DemoWebSockets.hs
+    source-dirs:         app
+#    ghc-options:
+#    - -threaded
+#    - -rtsopts
+#    - -with-rtsopts=-N
+    dependencies:
+    - sakuraio-platform
+    - websockets
+    - wuss
+    - network
+    - mtl
+    - text
+
+tests:
+  sakuraio-platform-test:
+    main:                Spec.hs
+    source-dirs:         test
+#    ghc-options:
+#    - -threaded
+#    - -rtsopts
+#    - -with-rtsopts=-N
+    dependencies:
+    - sakuraio-platform
+    - hspec
+    - time
+
+flags:
+  demo:
+    description: install demo applications.
+    manual: true
+    default: false
+    

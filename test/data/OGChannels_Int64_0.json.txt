@@ -1,0 +1,1 @@
+{"module":"uXXXXXXXXXXX","type":"channels","datetime":"2018-06-21T01:10:57.770020629Z","payload":{"channels":[{"channel":0,"type":"l","value":0,"datetime":"2018-06-21T01:10:57.770023483Z"}]}}
